@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<link href="/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="/assets/js/jquery-3.0.0.min.js"></script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/jquery.form.min.js"></script>
+</HEAD>
+<script type="text/javascript">
+</script>
+<body id="main">
+<div class="main">
+    <div class="nav"><em></em>当前位置: <a href="main.php" target="mainFrame">后台首页</a>  >  设定数据权限业务</div>
+    <form method="post" action="/admin/group/setgroupbusDo" name="form" id="form">
+         <div>
+             <div>请选择资产端</div>
+             <div>
+                 {volist name="list" id="vo"}
+                    <input type="checkbox" value="{$vo.fund_id}" name="chk_fund" >{$vo.name}</input> &nbsp;&nbsp;&nbsp;
+                 {/volist}
+             </div>
+         </div>
+
+        <br/>
+        <br/>
+        <div>
+            <div>请选择资金端</div>
+            <div>
+                {volist name="list_money" id="vo"}
+                <input type="checkbox" value="{$vo.money_id}" name="chk_money" >{$vo.name}</input> &nbsp;&nbsp;&nbsp;
+                {/volist}
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div>
+            <input type="hidden" name="group_id" value="{$Think.get.group_id}" />
+            <input  type="button" value="提交保存" onclick="sub(1)" />
+        </div>
+    </form>
+</div></div></div>
+
+<script type="text/javascript">
+
+    function validate_handle(){
+
+        //todo
+        return true;
+
+    }
+
+    function sub()
+    {
+        //检查和校验处理
+        if(false== validate_handle()){
+            return;
+        }
+
+        subform();
+
+    }
+
+</script>
+
+</BODY></HTML>

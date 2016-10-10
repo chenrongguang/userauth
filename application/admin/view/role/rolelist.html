@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<link href="/admin/css/Style.css" rel="stylesheet" type="text/css" />
+    <script src="/assets/js/jquery-3.0.0.min.js"></script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/jquery.form.min.js"></script>
+</HEAD>
+<script type="text/javascript">
+</script>
+<body id="main">
+<div class="main">
+    <div class="nav"><em></em>当前位置: <a href="main.php" target="mainFrame">后台首页</a>  >  角色列表</div>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="hxtabbor">
+  <tr>
+    <th width="10%" scope="col">序号</th>
+    <th width="30%" scope="col">名称</th>
+	<th width="60%" scope="col">操作</th>
+  </tr>
+{volist name="list" id="vo"}
+	<tr>
+		<TD  align="center" >{$vo.role_id}</TD>
+		<TD align="center" >{$vo.role_name}</TD>
+		<td align="center">
+            <a href="/admin/role/setRoleFunc">配置系统功能</a> &nbsp; &nbsp; &nbsp;
+		</td>
+	</tr>
+{/volist}
+
+</table>
+
+</div></div></div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+    });
+
+
+</script>
+
+</BODY></HTML>

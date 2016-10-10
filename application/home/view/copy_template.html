@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="/assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/assets/css/amazeui.min.css"/>
+    <!--注意以下目录的写法，由于目前assets目录放在了和index.php的同级目录下，所以以下的写法是没有问题的-->
+    <link rel="stylesheet" href="/assets/css/admin.css">
+    <!--该样式表用于分页-->
+    <link rel="stylesheet" href="/assets/css/pagination.css">
+    <script type="text/javascript" src="/assets/js/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="/assets/js/common.js"></script>
+</head>
+<body>
+<div>
+    <!--在模板里边只需要用以下语句就可以了，并且用了冒号的方式，具体的用法可以查询thinkphp对于模板中include的用法-->
+    {include file="Syspub/header" /}
+</div>
+<div class="am-cf admin-main">
+    {include file="Syspub/menu" /}
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div class="admin-content-body">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">表格</strong> / <small>Table</small></div>
+            </div>
+            <hr>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-6">
+                    <div class="am-btn-toolbar">
+                        <div class="am-btn-group am-btn-group-xs">
+                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-plus"></span> 新增</button>
+                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-save"></span> 保存</button>
+                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-archive"></span> 审核</button>
+                            <button type="button" class="am-btn am-btn-default"><span class="am-icon-trash-o"></span> 删除</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="am-u-sm-12 am-u-md-3">
+                    <div class="am-input-group am-input-group-sm">
+                        <input type="text" class="am-form-field" id="keywords">
+                          <span class="am-input-group-btn">
+                            <button class="am-btn am-btn-default" type="button" onclick="_search()" class="searchbtn">搜索</button>
+                          </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="am-g">
+                <div class="am-u-sm-12">
+                    <form class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-check"><input type="checkbox" class="checkAll" onclick="clickAll()" /></th>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">标题</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="list" id="vo">
+                                <tr id="tr_{$vo.id}">
+                                    <td><input type="checkbox"  class="checkOne" onclick="clickOne()" value="{$vo.id}"/></td>
+                                    <td>{$vo.id}</td>
+                                    <td><a href="/home/message/edit/id/{$vo.id}">{$vo.title}</a></td>
+                                    <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                                    <td>
+                                        <div class="am-btn-toolbar">
+                                            <div class="am-btn-group am-btn-group-xs">
+                                                <button class="am-btn am-btn-default am-btn-xs am-text-secondary"><span class="am-icon-pencil-square-o"></span> 编辑</button>
+                                                <button class="am-btn am-btn-default am-btn-xs am-hide-sm-only"><span class="am-icon-copy"></span> 复制</button>
+                                                <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only"><span class="am-icon-trash-o"></span> 删除</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                            <empty name="list">
+                                <tr>
+                                    <td colspan="5">目前没有相关信息</td>
+                                </tr>
+                            </empty>
+
+                            </tbody>
+                        </table>
+                        <notempty name="list">
+                            <div id="page">
+                                {$page}
+                            </div>
+                        </notempty>
+                        <hr />
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="admin-content-footer">
+            <hr>
+            <p class="am-padding-left">© 2016 crg.</p>
+        </footer>
+
+    </div>
+    <!-- content end -->
+</div>
+
+<script type="text/javascript">
+    var CONST_SERACH_STR = "请输入关键字";
+    function _search() {
+        var  = $.trim($('#keywords').val());
+        if (keyworks == CONST_SERACH_STR) {
+            keyworks = "";
+        }
+
+        window.location.href = "/home/message/messlist?keywords=" + keyworks;
+    }
+
+</script>
+
+</body>
+</html>

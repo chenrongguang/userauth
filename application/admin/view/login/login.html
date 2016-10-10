@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>WSM管理后台</title>
+<link href="/admin/css/style.css" rel="stylesheet" type="text/css" />
+<script src="/assets/js/jquery-3.0.0.min.js"></script>
+    <script src="/assets/js/common.js"></script>
+    <script src="/assets/js/jquery.form.min.js"></script>
+</head>
+<SCRIPT type=text/javascript>
+function checklogin(obj){
+	if(obj.admin.value=="")	{
+		alert("请输入登陆名");
+		return false;	}
+	if(obj.password.value=="")	{
+		alert("请输入登陆密码");
+		return false;	}
+	return true;}
+</SCRIPT>
+</head>
+<body>
+<div class="login">
+<div class="login-top"></div>
+	<form method="post" action="/admin/login/loginDo" name="form" id="form">
+	<div class="denglu">
+	   <input name="username" id="username" type="text" class="txt_1" value=""/>
+	   <input name="password" id="password" type="text" class="txt_2" />
+<!--	   <div class="yzm">-->
+<!--	  		<input name="yzm" type="text" value=""/>-->
+<!--	        <img src="images/yzm.jpg" width="77" height="40" /><a href="#">换一张</a>-->
+<!--	   </div>-->
+	   <input class="btn" type="button" value="登录" onclick="sub()" />
+	</div>
+</form>
+</div>
+<script type="text/javascript">
+	function validate_handle(){
+
+		//todo
+		return true;
+
+	}
+
+	function sub()
+	{
+		//检查和校验处理
+		if(false== validate_handle()){
+			return;
+		}
+
+		subform();
+
+	}
+</script>
+</body>
+</html>
