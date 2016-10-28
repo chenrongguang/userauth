@@ -1,0 +1,2 @@
+#用shell轮询，并且后台运行的方式，实行php的多进程运行，后续再配合定时任务
+http://local.userauth.com/cli.php/test/task/id/1
